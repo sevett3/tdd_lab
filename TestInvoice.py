@@ -28,3 +28,17 @@ def test_CanCalculateTotalDiscount(invoice, products):
 def test_CanCalculateTotalPurePrice(invoice, products):
     invoice.totalPurePrice(products)
     assert invoice.totalPurePrice(products) == 69.38
+
+
+# Owner: Tommy Evett
+# Test finding the most expensive product price
+def test_CanCalculateMostExpensiveProductPrice(invoice, products):
+    invoice.mostExpensiveProductPrice(products)
+    assert invoice.mostExpensiveProductPrice(products) == 7.5
+
+
+# Owner: Tommy Evett
+# Test calculating the average impure price
+def test_CanCalculateAverageImpurePrice(invoice, products):
+    invoice.averageImpurePrice(products)
+    assert invoice.averageImpurePrice(products) == 5

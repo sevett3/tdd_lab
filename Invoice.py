@@ -5,7 +5,7 @@ class Invoice:
 
     def addProduct(self, qnt, price, discount):
         self.items['qnt'] = qnt
-        self.items['unit price'] = price
+        self.items['unit_price'] = price
         self.items['discount'] = discount
         return self.items
 
@@ -25,8 +25,26 @@ class Invoice:
         return total_discount
 
     def totalPurePrice(self, products):
-        total_pure_price = self.totalImpurePrice(products)-self.totalDiscount(products)
+        total_pure_price = self.totalImpurePrice(products) - self.totalDiscount(products)
         return total_pure_price
+
+    # Owner: Erik Salazar
+    # Finding the most expensive product price
+    def mostExpensiveProductPrice(self, products):
+        most_expensive_product_price = 0
+        for k, v in products.items():
+            if float(v['unit_price']) > most_expensive_product_price:
+                most_expensive_product_price = float(v['unit_price'])
+        return most_expensive_product_price
+
+    # Owner: Joshua Ellis
+    # Finding the total average impure price
+    def averageImpurePrice(self, products):
+        total_items = 0
+        for k, v in products.items():
+            total_items += int(v['qnt'])
+        average_impure_price = round(self.totalImpurePrice(products) / total_items, 2)
+        return average_impure_price
 
     def inputAnswer(self, input_value):
         while True:
